@@ -1,0 +1,103 @@
+import Product from '../model/product';
+
+const PRODUCTS = [
+    new Product(
+        '1',
+        'Axis Bluechip Fund',
+        'https://img.favpng.com/11/18/9/axis-bank-logo-image-credit-card-png-favpng-9JNKSE9EWQ8QXbPa55q0PthXD.jpg',
+        '9.51%',
+        'Moderately High Risk',
+        'Large Cap',
+        '30.96',
+        '5',
+        '12716',
+        [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24]
+    ),
+    new Product(
+        '2',
+        'Parag Parikh Long',
+        'data:image/jpeg;base64,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',
+        '9.1%',
+        'Moderately High Risk',
+        'Multi Cap',
+        '27.13',
+        '5',
+        '2925',
+        [1, 10.1, 10.2, 20.4, -4, 34, 85, 91, 35, 53, 53, 24]
+    ),
+    new Product(
+        '3',
+        'SBI Small Cap Fund',
+        'data:image/png;base64,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',
+        '4.1%',
+        'Moderately High Risk',
+        'Small Cap',
+        '51.3',
+        '5',
+        '3280',
+        [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24]
+    ),
+    new Product(
+        '4',
+        'UTI Nifty Index Fund',
+        'https://s3.india.com/wp-content/uploads/2017/04/e2CnXqY.jpg',
+        '2.61%',
+        'Moderately High Risk',
+        'Index',
+        '70.13',
+        '3',
+        '2005',
+        [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24]
+    ),
+    new Product(
+        '5',
+        'ICICI Prudential Bluechip',
+        'https://i2.wp.com/logosandtypes.com/wp-content/uploads/2019/08/ICICI-bank.png?fit=2000%2C2000&ssl=1',
+        '2.55%',
+        'Moderately High Risk',
+        'Large Cap',
+        '40.46',
+        '4',
+        '21700',
+        [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24]
+    ),
+
+    new Product(
+        '6',
+        'IIFL Focused Equity',
+        'https://ttweb.indiainfoline.com/trade/images/new-yantra.png',
+        '6.55%',
+        'Moderately High Risk',
+        'Large Cap',
+        '17.02',
+        '4',
+        '800',
+        [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24]
+    ),
+    new Product(
+        '7',
+        'Invesco India',
+        'https://media.glassdoor.com/sqll/4518/invesco-squarelogo-1562878428314.png',
+        '4.03%',
+        'Moderately High Risk',
+        'Mid Cap',
+        '51.99',
+        '5',
+        '755',
+        [50, 10, 40, 95, 40, 24, 85, 91, 35, 53, 53, 24]
+    ),
+    new Product(
+        '8',
+        'Invesco USA',
+        'https://media.glassdoor.com/sqll/4518/invesco-squarelogo-1562878428314.png',
+        '4.03%',
+        'Moderately High Risk',
+        'Mid Cap',
+        '51.99',
+        '5',
+        '755',
+        [50, 10, 40, 95, 40, 24, 85, 91, 35, 53, 53, 24]
+    )
+]
+
+export default PRODUCTS;
