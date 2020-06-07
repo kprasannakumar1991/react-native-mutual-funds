@@ -1,8 +1,8 @@
-import {SIGNUP} from './types';
+import {SAVE_USER} from './types';
 
-export const signUpUser = user => {
+export const saveUser = user => {
     return {
-        type: SIGNUP,
+        type: SAVE_USER,
         payload: user
     }    
 }

@@ -1,20 +1,19 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {Button, View, Text, TextInput, StyleSheet, KeyboardAvoidingView, ScrollView} from 'react-native';
+import { View, TextInput, StyleSheet, KeyboardAvoidingView} from 'react-native';
 
 import LightText from '../../components/LightText';
 import ErrorText from '../../components/ErrorText';
+import MainButton from '../../components/MainButton';
 
-import {signUpUser} from '../../store/actions/user';
-
-import Colors from '../../constants/Colors';
+import {saveUser} from '../../store/actions/user';
 
 const SignUpScreen = props => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [gender, setGender] = useState('');
-    const [age, setAge] = useState('');
+    const [name, setName] = useState('test');
+    const [email, setEmail] = useState('test@gmail.com');
+    const [password, setPassword] = useState('test12345');
+    const [gender, setGender] = useState('male');
+    const [age, setAge] = useState('35');
 
     const [nameIsValid, setNameIsValid] = useState(false);
     const [emailIsValid, setEmailIsValid] = useState(false);
@@ -48,25 +47,10 @@ const SignUpScreen = props => {
         }
 
 
-        dispatch(signUpUser(user));
+        console.log('Saving user...')
+        dispatch(saveUser(user));
 
-        resetState();
-        
         props.navigation.navigate({routeName: 'Home'})
-    }
-
-    const resetState = () => {
-        setName('');
-        setEmail('');
-        setPassword('');
-        setGender('');
-        setAge('');
-
-        setNameIsValid(false);
-        setEmailIsValid(false);
-        setPasswordIsValid(false);
-        setAgeIsValid(false);
-        setSubmitClicked(false);
     }
 
     const showError = (validInput, message) => {
@@ -112,6 +96,7 @@ const SignUpScreen = props => {
                                     value={password}
                                     onChangeText={text => setPassword(text)}   
                                     keyboardType='default'
+                                    secureTextEntry={true}
                                 />
                                 {showError(passwordIsValid, 'Password should be more than 5 characters')}
                             </View>
@@ -137,11 +122,9 @@ const SignUpScreen = props => {
                                 {showError(ageIsValid, 'Age cannot be empty')}
                             </View>
 
-                                <Button 
-                                    title="Sign Up" 
-                                    color={Colors.primaryColor}
-                                    onPress={signUpHandler}
-                                />
+                            <MainButton onPress={signUpHandler}>
+                                Sign Up
+                            </MainButton>   
                     </View>
 
            

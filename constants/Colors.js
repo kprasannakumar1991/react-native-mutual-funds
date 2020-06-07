@@ -1,5 +1,5 @@
 export default {
-    primaryColor: 'black',
+    primaryColor: '#647de4',
     secondaryColor: '#CCC',
     lightTextColor: '#6e6e6e',
     darkTextColor: '#2a2a2a',

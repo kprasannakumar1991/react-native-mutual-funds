@@ -85,18 +85,6 @@ const PRODUCTS = [
         '5',
         '755',
         [50, 10, 40, 95, 40, 24, 85, 91, 35, 53, 53, 24]
-    ),
-    new Product(
-        '8',
-        'Invesco USA',
-        'https://media.glassdoor.com/sqll/4518/invesco-squarelogo-1562878428314.png',
-        '4.03%',
-        'Moderately High Risk',
-        'Mid Cap',
-        '51.99',
-        '5',
-        '755',
-        [50, 10, 40, 95, 40, 24, 85, 91, 35, 53, 53, 24]
     )
 ]
 
