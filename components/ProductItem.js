@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     divider: {
-        borderBottomColor: '#ccc',
+        borderBottomColor: Colors.primarColor,
         borderBottomWidth: 1
     },
     footer: {

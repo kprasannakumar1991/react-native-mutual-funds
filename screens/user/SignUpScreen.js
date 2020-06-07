@@ -5,6 +5,7 @@ import { View, TextInput, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import LightText from '../../components/LightText';
 import ErrorText from '../../components/ErrorText';
 import MainButton from '../../components/MainButton';
+import GenderTab from '../../components/GenderTab';
 
 import {saveUser} from '../../store/actions/user';
 
@@ -22,6 +23,10 @@ const SignUpScreen = props => {
     const [submitIsClicked, setSubmitClicked] = useState(false);
 
     const dispatch = useDispatch();
+
+    const onGenderTabSelected = (gender) => {
+        setGender(gender);
+    }    
 
     const signUpHandler = () => {
 
@@ -47,7 +52,6 @@ const SignUpScreen = props => {
         }
 
 
-        console.log('Saving user...')
         dispatch(saveUser(user));
 
         props.navigation.navigate({routeName: 'Home'})
@@ -103,13 +107,9 @@ const SignUpScreen = props => {
 
                             <View style={styles.inputControl}>
                                 <LightText style={styles.label}>Gender</LightText>
-                                <TextInput 
-                                    style={styles.input} 
-                                    value={gender}
-                                    onChangeText={text => setGender(text)}
-                                    keyboardType='default' 
-                                />
+                                <GenderTab onTabSelected={onGenderTabSelected} />
                             </View>
+
 
                             <View style={styles.inputControl}>
                                 <LightText style={styles.label}>Age</LightText>
