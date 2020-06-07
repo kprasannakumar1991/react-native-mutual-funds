@@ -10,11 +10,11 @@ import GenderTab from '../../components/GenderTab';
 import {saveUser} from '../../store/actions/user';
 
 const SignUpScreen = props => {
-    const [name, setName] = useState('test');
-    const [email, setEmail] = useState('test@gmail.com');
-    const [password, setPassword] = useState('test12345');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [gender, setGender] = useState('male');
-    const [age, setAge] = useState('35');
+    const [age, setAge] = useState('');
 
     const [nameIsValid, setNameIsValid] = useState(false);
     const [emailIsValid, setEmailIsValid] = useState(false);
@@ -28,34 +28,30 @@ const SignUpScreen = props => {
         setGender(gender);
     }    
 
+
+    if (nameIsValid && emailIsValid && passwordIsValid  && ageIsValid) {
+        const user = {
+            loggedIn: true,
+            name: name,
+            email: email,
+            password: password,
+            gender: gender,
+            age: age
+        }
+        dispatch(saveUser(user));
+        props.navigation.navigate({routeName: 'Home'})
+    }
+
     const signUpHandler = () => {
 
         setSubmitClicked(true);
-       
+   
         name.trim().length !== 0 ? setNameIsValid(true): setNameIsValid(false);
         email.includes('@') ? setEmailIsValid(true) : setEmailIsValid(false);
         password.trim().length > 5 ? setPasswordIsValid(true) : setPasswordIsValid(false);
         age.trim().length > 0 ? setAgeIsValid(true) : setAgeIsValid(false);
-        
-
-        if (!nameIsValid || !emailIsValid || !passwordIsValid || !ageIsValid) {
-            return;
-        }
-
-        const user = {
-            loggedIn: true,
-            name,
-            email,
-            password,
-            gender,
-            age
-        }
-
-
-        dispatch(saveUser(user));
-
-        props.navigation.navigate({routeName: 'Home'})
-    }
+    
+    };
 
     const showError = (validInput, message) => {
         if (submitIsClicked && !validInput) {
@@ -64,6 +60,7 @@ const SignUpScreen = props => {
             return null;
         }
     }
+
     return (
         <KeyboardAvoidingView 
             style={styles.screen}
@@ -122,7 +119,7 @@ const SignUpScreen = props => {
                                 {showError(ageIsValid, 'Age cannot be empty')}
                             </View>
 
-                            <MainButton onPress={signUpHandler}>
+                            <MainButton onPress={() => signUpHandler()}>
                                 Sign Up
                             </MainButton>   
                     </View>
@@ -157,10 +154,8 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
-        borderWidth: 1,
-        paddingLeft: 10,
-        margin: 10,
-        borderRadius: 20,
+        borderBottomWidth: 1,
+        margin: 10
       }
 });
 
